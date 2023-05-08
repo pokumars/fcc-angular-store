@@ -5,7 +5,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   templateUrl: './products-header.component.html'
 })
 export class ProductsHeaderComponent implements OnInit {
-  //@Output() is how you send a vlaue outside of your component to parent components
+  //@Output() is how you send a value outside of your component to parent components
   @Output() columnsCountChange = new EventEmitter<number>()
 
   sort = 'desc';

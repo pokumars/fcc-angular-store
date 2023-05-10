@@ -7,14 +7,8 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false;
-  product: Product | undefined = {
-    id: 1,
-    title: 'sneakers',
-    price: 150,
-    category: 'shoes',
-    description: 'description dummy text',
-    image: "https://via.placeholder.com/150",
-  };
+  //@Input() means it gets value from parent
+  @Input() product: Product | undefined;
 
   //@Output() is how you send a value outside of your component to parent components
   @Output() addToCart = new EventEmitter();

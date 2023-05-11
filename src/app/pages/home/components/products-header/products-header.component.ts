@@ -7,10 +7,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ProductsHeaderComponent implements OnInit {
   //@Output() is how you send a value outside of your component to parent components
   @Output() columnsCountChange = new EventEmitter<number>()
+  @Output() itemsCountChange = new EventEmitter<string>()
+  @Output() sortChange = new EventEmitter<string>()
 
   sort = 'desc';
   itemsShowCount = 12;
-  ;
 
   constructor() { }
 
@@ -18,11 +19,14 @@ export class ProductsHeaderComponent implements OnInit {
   }
 
   onSortUpdated(newSort: string): void {
+    console.log('newSort', newSort);
     this.sort = newSort;
+    this.sortChange.emit(newSort);
   }
 
   onItemsUpdated(count: number): void {
     this.itemsShowCount = count;
+    this.itemsCountChange.emit(String(count));
   }
 
   //the value gets sent out into the parent here with this emit

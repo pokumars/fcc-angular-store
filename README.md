@@ -2,6 +2,22 @@
 This is from a Freecodecamp video tutorial
 [Build a Webshop – Angular, Node.js, TypeScript, Stripe - YouTube](https://www.youtube.com/watch?v=Kbauf9IgsC4)
 
+- Fakestore API
+- Stripe API
+- Rxjs
+- Angular
+- Material Angular
+- TailWind CSS
+
+| Home (desktop)   |
+|-------------| 
+| ![Home page](https://github.com/pokumars/fcc-angular-store/assets/33485810/24629d30-51a6-40f5-b8e0-503d713d6985) |
+
+| Shoping Cart (desktop) |
+|-------------| 
+| ![Cart page](https://github.com/pokumars/fcc-angular-store/assets/33485810/fef5e724-c933-415a-a7a1-b1326adcedc1) |
+
+
 
 ## Default generated angular text
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.

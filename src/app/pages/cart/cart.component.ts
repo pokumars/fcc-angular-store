@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { loadStripe } from '@stripe/stripe-js';
 import { Cart, CartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -34,7 +36,7 @@ export class CartComponent implements OnInit {
 
   dataSource: Array<CartItem> = [];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private httpClient: HttpClient) { }
 
   getTotal(items: Array<CartItem>): number {
     return this.cartService.getTotal(items);
@@ -49,6 +51,19 @@ export class CartComponent implements OnInit {
       this.cart = _cart;
       this.dataSource = this.cart.items;
 
+    })
+  }
+
+  onCheckout(): void {
+    //request to our local server. The local server will then make a request to stripe, then it will return a session id and using the session d, we can open the checkout page
+    this.httpClient.post('http://localhost:4242/checkout', {
+      items: this.cart.items
+    }).subscribe(async (res: any) => {
+      //this is the publishable_key
+      let stripe = await loadStripe('pk_test_51MoZLaHb2UqU7uvxUfOYtPSAYJY9DmvuAouEgFtJLOmULUlpgulgRcS0zffdRhJH5dHOSLmSkjRprUzXtf5nT27I00ddpMSOwM');
+      stripe?.redirectToCheckout({
+        sessionId: res.id
+      })
     })
   }
 
